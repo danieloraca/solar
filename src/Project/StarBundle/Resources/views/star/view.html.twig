@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="d-block">
+        <h1>Star {{ star.name }}</h1>
+        <hr />
+        <h4>Solar System: {{ star.solarSystem.name }}</h4>
+        <h4>Mass: {{ star.mass }}</h4>
+        <h4>Planets: </h4>
+        {% for planet in star.planets %}
+            <h5><b>{{ planet.name }}</b> Mass: <b>{{ planet.mass }}</b> Distance to star: {{ planet.distance }}</h5>
+        {% endfor %}
+        <a href="{{ path('add_planet', {starReference: star.reference}, true) }}">Add Planet</a>
+        <div class="container">
+
+
+        </div>
+        <a href="{{ path('index') }}">Back</a>
+    </div>
+{% endblock %}

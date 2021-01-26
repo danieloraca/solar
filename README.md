@@ -1,5 +1,5 @@
-# Solar Systems
 
+![alt text](https://github.com/danieloraca/solar/blob/main/Demo.png?raw=true)
 ## Installation
 The application is using docker for serving an instance of MySQL database.
 ```yaml
@@ -10,11 +10,20 @@ Then use the following commands to install the application dependencies.
 ```yaml
 $ composer install
 $ yarn install
-$ yarn encore dev
 ```
 Then the migrations need to be executed
 ```yaml
 $ php bin/console doctrine:migrations:migrate
+```
+After that use
+```yaml
+$ symfony serve
+```
+to start the application locally.
+
+If symfony is not installed, use
+```yaml
+$ curl -sS https://get.symfony.com/cli/installer | bash 
 ```
 
 ---

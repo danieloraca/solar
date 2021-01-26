@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="d-block">
+        <h1>Solar Systems</h1>
+        <hr />
+        <p>Known Solar Systems: {{ totalSolarSystems }}</p>
+        <a href="{{ path('add_solar_system') }}">Add New Solar System</a>
+        <hr />
+
+        <div class="container">
+            {% for solarSystem in solarSystems %}
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>{{ solarSystem.name }}</h4>
+                    <hr />
+                    Mass: {{ solarSystem.mass }} M☉
+                    <hr />
+                    <p>Estimated Diameter:
+                        {% if solarSystem.diameter != 0 %}
+                            {{ astroUnit(solarSystem.diameter) }}
+                        {% else %}
+                            Not Estimated
+                        {% endif %}
+                    </p>
+                    <p>Calculated Diameter:
+                        {% if solarSystem.calculatedDiameter != 0 %}
+                            {{ astroUnit(solarSystem.calculatedDiameter) }}
+                        {% else %}
+                            No values
+                        {% endif %}
+                    </p>
+                    <hr />
+                    <a href="{{ path('update_diameter', {solarSystemReference: solarSystem.reference}, true) }}">Update Diameter</a>
+                </div>
+
+                <div class="col-md-8">
+                    {% for star in solarSystem.stars %}
+                        <a href="{{ path('view_star', {starReference: star.reference}, true) }}">{{ star.name }}</a>
+                        <div class="container">
+                            {% for planet in star.planets %}
+                                <div class="row">
+                                    <div class="col-md-3">{{ planet.name }}</div>
+                                    <div class="col-md-3">{{ planet.mass }} M☉</div>
+                                    <div class="col-md-6">{{ astroUnit(planet.distance) }} </div>
+                                </div>
+                            {% endfor %}
+                            <a href="{{ path('add_planet', {starReference: star.reference}, true) }}">Add Planet</a>
+                        </div>
+                        <hr />
+                    {% endfor %}
+                    <a href="{{ path('add_star', {solarSystemReference: solarSystem.reference}, true) }}">Add Star</a>
+                </div>
+            </div>
+            <hr />
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

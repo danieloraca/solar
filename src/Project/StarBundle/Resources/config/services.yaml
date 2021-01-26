@@ -1,0 +1,24 @@
+services:
+  #is this really required?
+  App\Project\StarBundle\Repository\SolarSystemRepository:
+    autowire: true
+    public: false
+
+  App\Project\StarBundle\Provider\SolarSystemProvider:
+    autowire: true
+    public: false
+
+  App\Project\StarBundle\Provider\StarProvider:
+    autowire: true
+    public: false
+
+  App\Project\StarBundle\Controller\StarController:
+    autowire: true
+    public: false
+    tags: [ controller.service_arguments ]
+
+  App\Project\StarBundle\Twig\AstronomicalUnitExtension:
+    autowire: true
+    tags:
+      - { name: twig.proxied_extension }
+

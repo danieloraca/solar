@@ -1,0 +1,25 @@
+App\Project\StarBundle\Entity\Planet:
+  type: entity
+  repositoryClass: App\Project\StarBundle\Repository\PlanetRepository
+  table: planet
+  id:
+    reference:
+      type: guid
+      unique: true
+  fields:
+    name:
+      type: string
+      length: 128
+    mass:
+      type: bigint
+    distance:
+      type: float
+  manyToOne:
+    star:
+      targetEntity: App\Project\StarBundle\Entity\Star
+      inversedBy: stars
+      joinColumn:
+        name: star_reference
+        referencedColumnName: reference
+        nullable: false
+        onDelete: cascade

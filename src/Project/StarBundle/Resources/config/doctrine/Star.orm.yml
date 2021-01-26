@@ -1,0 +1,28 @@
+App\Project\StarBundle\Entity\Star:
+  type: entity
+  repositoryClass: App\Project\StarBundle\Repository\StarRepository
+  table: star
+  id:
+    reference:
+      type: guid
+      unique: true
+  fields:
+    name:
+      type: string
+      length: 128
+    mass:
+      type: bigint
+  oneToMany:
+    planets:
+      targetEntity: App\Project\StarBundle\Entity\Planet
+      mappedBy: star
+      cascade: [ 'remove', 'persist' ]
+  manyToOne:
+    solarSystem:
+      targetEntity: App\Project\StarBundle\Entity\SolarSystem
+      inversedBy: stars
+      joinColumn:
+        name: solar_system_reference
+        referencedColumnName: reference
+        nullable: false
+        onDelete: cascade

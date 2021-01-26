@@ -1,0 +1,2 @@
+star_routes:
+  resource: "@ProjectStarBundle/Resources/config/routing/routing.yaml"

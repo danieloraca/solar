@@ -1,0 +1,28 @@
+index:
+    path: /
+    controller: App\Project\StarBundle\Controller\MainController::index
+
+add_solar_system:
+    path: '/add-solar-system'
+    controller: App\Project\StarBundle\Controller\SolarSystemController::add
+
+view_star:
+    path: /star/{starReference}
+    controller: App\Project\StarBundle\Controller\StarController::view
+
+add_star:
+    path: /add-star/{solarSystemReference}
+    controller: App\Project\StarBundle\Controller\StarController::add
+
+add_planet:
+    path: add-planet/{starReference}
+    controller: App\Project\StarBundle\Controller\PlanetController::add
+
+update_diameter:
+    path: update_diameter/{solarSystemReference}
+    controller: App\Project\StarBundle\Controller\SolarSystemController::updateDiameter
+
+api_solar_systems:
+    path: api/solarSystems
+    controller: App\Project\StarBundle\Controller\ApiSolarSystemController::index
+    methods:  [GET]
