@@ -22,3 +22,8 @@ services:
     tags:
       - { name: twig.proxied_extension }
 
+  App\Project\StarBundle\Controller\ApiSolarSystemController:
+    autowire: true
+    public: false
+    tags: [ controller.service_arguments ]
+
