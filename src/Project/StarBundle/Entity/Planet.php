@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Project\StarBundle\Entity;
 
+use Ramsey\Uuid\Uuid;
+
 class Planet
 {
     /** @var string */
@@ -29,27 +31,11 @@ class Planet
     }
 
     /**
-     * @param string $mass
-     */
-    public function setMass(string $mass): void
-    {
-        $this->mass = $mass;
-    }
-
-    /**
      * @return float
      */
     public function getDistance(): float
     {
         return $this->distance;
-    }
-
-    /**
-     * @param float $distance
-     */
-    public function setDistance(float $distance): void
-    {
-        $this->distance = $distance;
     }
 
     /**
@@ -61,27 +47,11 @@ class Planet
     }
 
     /**
-     * @param string $reference
-     */
-    public function setReference(string $reference): void
-    {
-        $this->reference = $reference;
-    }
-
-    /**
      * @return string
      */
     public function getName(): string
     {
         return $this->name;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName(string $name): void
-    {
-        $this->name = $name;
     }
 
     /**
@@ -92,11 +62,12 @@ class Planet
         return $this->star;
     }
 
-    /**
-     * @param Star $star
-     */
-    public function setStar(Star $star): void
+    public function terraformPlanet(string $name, string $mass, float $distance, Star $star): void
     {
+        $this->reference = Uuid::uuid4()->toString();
+        $this->name = $name;
+        $this->mass = $mass;
+        $this->distance = $distance;
         $this->star = $star;
     }
 }

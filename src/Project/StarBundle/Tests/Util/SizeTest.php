@@ -42,7 +42,7 @@ class SizeTest extends TestCase
         $this->star = new Star();
         $this->star->setMass('5');
         $this->planet = new Planet();
-        $this->planet->setMass('2');
+        $this->planet->terraformPlanet('name', '2', 3, $this->star);
         $this->star->setPlanets(new ArrayCollection([$this->planet]));
         $this->solarSystem->setStars(new ArrayCollection([$this->star]));
 

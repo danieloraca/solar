@@ -14,9 +14,9 @@ class PlanetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('mass', IntegerType::class)
-            ->add('distance', IntegerType::class)
+            ->add('name', TextType::class, array('mapped' => false))
+            ->add('mass', IntegerType::class, array('mapped' => false))
+            ->add('distance', IntegerType::class, array('mapped' => false))
             ->add('save', SubmitType::class);
     }
 }
